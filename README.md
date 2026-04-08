@@ -29,10 +29,3 @@ npm install
 - Lancer le projet
 npm run dev
 
-
-
----
-
-## 📄 Licence
-
-Ce projet est personnel et destiné à un usage de démonstration.
