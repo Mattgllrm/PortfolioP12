@@ -1,0 +1,28 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.btn {
+  display: inline-block;
+
+  &.primary {
+    padding: 12px 28px;
+    letter-spacing: 0.2px;
+    @include gradient-button($accent, $accent-2);
+  }
+
+  &.secondary {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: $text;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    transition: transform 0.25s ease, background 0.25s ease;
+    background: rgba(255, 255, 255, 0.04);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+  }
+}

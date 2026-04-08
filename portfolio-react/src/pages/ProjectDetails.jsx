@@ -30,7 +30,7 @@ export default function ProjectDetails() {
         ← Retour aux projets
       </Link>
 
-      {/* =========== HERO ============= */}
+      {/* =========== HERO ======= */}
       <header className="project-hero">
         <div className="project-hero__top">
           <div>
@@ -63,7 +63,7 @@ export default function ProjectDetails() {
           </div>
         </div>
 
-        {/* ================= COVER ================= */}
+        {/* ======== COVER ================ */}
         <div className="project-cover">
           {project.cover ? (
             <img src={project.cover} alt={`${project.title} - aperçu`} />
@@ -74,7 +74,7 @@ export default function ProjectDetails() {
         </div>
       </header>
 
-      {/* ================= CE QUE JAI REALISE ============= */}
+      {/* ================= CE QUE JAI REALISE ========== */}
       <section className="project-section">
         <h2>Ce que j’ai réalisé</h2>
         <ul className="project-list">
@@ -84,7 +84,7 @@ export default function ProjectDetails() {
         </ul>
       </section>
 
-      {/* =============== GALLERY ============== */}
+      {/* =============== GALLERY ============ */}
       {project.gallery?.length ? (
         <section className="project-section">
           <h2>Galerie</h2>

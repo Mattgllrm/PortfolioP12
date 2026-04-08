@@ -1,0 +1,114 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+#hero {
+  color: #fff;
+  text-align: center;
+  padding: 115px 20px 110px;
+  background: transparent;
+
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.45rem);
+    line-height: 1.05;
+    margin-bottom: 18px;
+    letter-spacing: -0.04em;
+
+    span {
+      color: $accent;
+    }
+  }
+
+  p {
+    font-size: 1.12rem;
+    color: $muted;
+    margin-bottom: 36px;
+    line-height: 1.75;
+  }
+}
+
+.hero-content {
+  max-width: 760px;
+  margin: 0 auto;
+  animation: fadeUp 850ms ease forwards;
+}
+
+.hero-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(79, 140, 255, 0.12);
+  color: $accent;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border: 1px solid rgba(79, 140, 255, 0.24);
+  margin-bottom: 18px;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+  cursor: default;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-3px);
+    background: rgba(79, 140, 255, 0.18);
+    border-color: rgba(79, 140, 255, 0.45);
+    box-shadow:
+      0 8px 25px rgba(79, 140, 255, 0.25),
+      0 0 0 1px rgba(79, 140, 255, 0.15) inset;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-120%);
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.25),
+      transparent
+    );
+    transition: transform 0.6s ease;
+  }
+
+  &:hover::after {
+    transform: translateX(120%);
+  }
+}
+
+.hero-actions {
+  @include flex-center(row, center, center, 14px);
+  flex-wrap: wrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge,
+  .hero-badge::after {
+    transition: none !important;
+  }
+}
+
+@include respond(mobile) {
+  #hero {
+    h1 {
+      font-size: 2.25rem;
+    }
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn.primary,
+  .btn.secondary {
+    width: 100%;
+    max-width: 340px;
+    text-align: center;
+  }
+}

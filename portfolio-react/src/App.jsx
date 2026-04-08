@@ -36,7 +36,6 @@ export default function App() {
         <Route path="/projects/:slug" element={<ProjectDetails />} />
         <Route path="/parcours" element={<Parcours />} />
       </Routes>
-
       <Footer />
     </>
   );

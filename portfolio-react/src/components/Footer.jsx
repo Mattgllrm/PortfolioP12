@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="container">
         <p>&copy; 2026 Matthis Guillerm - Portfolio</p>
         <p>
-          <a href="" target="_blank" rel="noreferrer">
+          <a href="https://github.com/Mattgllrm/PortfolioP12" target="_blank" rel="noreferrer">
             GitHub
           </a>
           |

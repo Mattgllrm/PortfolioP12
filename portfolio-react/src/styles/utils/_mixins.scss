@@ -1,0 +1,99 @@
+@mixin flex-center($direction: row, $justify: center, $align: center, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin glass-card(
+  $background,
+  $border,
+  $radius,
+  $shadow,
+  $blur: 10px
+) {
+  background: $background;
+  border: 1px solid $border;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+@mixin interactive-lift(
+  $y: -6px,
+  $shadow: null,
+  $border-color: null,
+  $background: null
+) {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+
+  &:hover {
+    transform: translateY($y);
+
+    @if $shadow != null {
+      box-shadow: $shadow;
+    }
+
+    @if $border-color != null {
+      border-color: $border-color;
+    }
+
+    @if $background != null {
+      background: $background;
+    }
+  }
+}
+
+@mixin gradient-button($color-1, $color-2) {
+  background: linear-gradient(135deg, $color-1, $color-2);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  box-shadow: 0 12px 30px rgba(79, 140, 255, 0.22);
+
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+  }
+}
+
+@mixin pill-badge(
+  $color,
+  $background,
+  $border-color,
+  $radius: 999px
+) {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: $radius;
+  color: $color;
+  background: $background;
+  border: 1px solid $border-color;
+  font-weight: 900;
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == tablet {
+    @media (max-width: 900px) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == parcours {
+    @media (max-width: 920px) {
+      @content;
+    }
+  }
+}

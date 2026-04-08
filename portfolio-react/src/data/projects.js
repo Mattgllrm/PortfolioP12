@@ -32,7 +32,7 @@ const projects = [
     role: "Intégration front-end",
 
     highlights: [
-      "Intégration pixel-perfect à partir de maquettes Figma",
+      "Intégration à partir de maquettes Figma",
       "Animations 100% CSS (keyframes, transitions, transformations)",
       "Architecture SCSS modulaire et maintenable",
       "Approche mobile-first avec adaptation tablette et desktop",
@@ -100,7 +100,7 @@ const projects = [
       "Afficher dynamiquement les projets via l’API, mettre en place une authentification sécurisée, puis permettre à un utilisateur admin de gérer les contenus (ajout/suppression) via une interface dédiée.",
 
     stack:
-      "JavaScript (vanilla), DOM, Fetch API, API REST, authentification par token (localStorage), modale UI, HTML/CSS existants.",
+      "JavaScript, DOM, Fetch API, API REST, authentification par token (localStorage), modale UI, HTML/CSS existants.",
 
     competences:
       "Manipulation du DOM, gestion d’événements, appels API asynchrones, authentification (token), gestion de formulaires (validation + upload), organisation du code et gestion des erreurs côté front.",

@@ -1,0 +1,160 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+.skills-intro {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+  color: $muted;
+  line-height: 1.85;
+  margin-top: -10px;
+  margin-bottom: 34px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 22px;
+  margin-top: 10px;
+}
+
+.skills-card {
+  grid-column: span 4;
+  padding: 22px;
+  @include glass-card($surface, $border, $radius, $shadow-soft);
+  @include interactive-lift(
+    -6px,
+    $shadow,
+    rgba(255, 255, 255, 0.18),
+    $surface-2
+  );
+}
+
+.skills-card__header {
+  h3 {
+    font-size: 1.15rem;
+    color: $text;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.skills-badges {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-badge {
+  @include flex-center(row, center, center, 8px);
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: $text;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.skill-icon {
+  width: 22px;
+  height: 22px;
+  @include flex-center;
+
+  img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    object-fit: contain;
+    filter: saturate(1.05);
+  }
+}
+
+.skills-timeline {
+  margin-top: 36px;
+  padding: 24px;
+  @include glass-card($surface, $border, $radius, $shadow-soft);
+}
+
+.skills-timeline__title {
+  color: $text;
+  font-size: 1.15rem;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+
+.timeline {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  position: relative;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 14px;
+  padding: 14px 0;
+  position: relative;
+
+  &:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 32px;
+    width: 2px;
+    height: calc(100% - 32px);
+    background: rgba(255, 255, 255, 0.10);
+  }
+}
+
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+  margin-top: 4px;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.timeline-content {
+  p {
+    color: $muted;
+    line-height: 1.75;
+  }
+}
+
+.timeline-date {
+  display: inline-block;
+  font-weight: 900;
+  color: $text;
+  margin-bottom: 6px;
+}
+
+.timeline-item--ongoing {
+  .timeline-dot {
+    background: $accent;
+    box-shadow: 0 0 0 6px rgba(79, 140, 255, 0.18);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(79, 140, 255, 0.35);
+      animation: dotBreath 2s ease-out infinite;
+    }
+  }
+
+  .timeline-date {
+    color: $accent;
+  }
+}
+
+@include respond(tablet) {
+  .skills-card {
+    grid-column: span 12;
+  }
+}

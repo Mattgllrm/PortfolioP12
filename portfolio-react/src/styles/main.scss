@@ -1,0 +1,19 @@
+@use "./utils/variables";
+@use "./utils/mixins";
+@use "./utils/animations";
+
+@use "./base/base";
+
+@use "./layout/navbar";
+@use "./layout/footer";
+
+@use "./components/buttons";
+@use "./components/hero";
+@use "./components/about";
+@use "./components/skills";
+@use "./components/projects";
+@use "./components/contact";
+
+@use "./pages/project-details";
+@use "./pages/parcours";
+

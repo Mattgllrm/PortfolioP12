@@ -1,14 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  
   const [isSent, setIsSent] = useState(false);
   const [isSending, setIsSending] = useState(false);
-
   const closeBtnRef = useRef(null);
 
+  //  MAJ des champs du formulaire
   const handleChange = (e) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value, // met à jour le bon champ
+    }));
   };
 
   const closeModal = () => setIsSent(false);
@@ -16,38 +25,54 @@ export default function Contact() {
   useEffect(() => {
     if (!isSent) return;
 
-    // focus sur le btn fermer
+    // focus automatique sur le bouton fermer
     closeBtnRef.current?.focus();
 
-    // bloque scroll derrière
+    // bloque le scroll derrière la modale
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    // Echap pour fermer
+    
     const onKeyDown = (e) => {
       if (e.key === "Escape") closeModal();
     };
     window.addEventListener("keydown", onKeyDown);
 
+    // nettoyage 
     return () => {
       document.body.style.overflow = prevOverflow;
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [isSent]);
 
+  //  Envoi du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSending(true);
+    setIsSending(true); // active le loading
 
     try {
-      await new Promise((r) => setTimeout(r, 450));
+      const response = await fetch("https://formspree.io/f/xgopqrdj", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData), 
+      });
+      
+       // erreur
+      if (!response.ok) {
+        throw new Error("Erreur lors de l'envoi du formulaire");
+      }
 
-      setIsSent(true);
-      setFormData({ name: "", email: "", message: "" });
+      // succès
+      setIsSent(true); // ouvre la modale
+      setFormData({ name: "", email: "", message: "" }); // reset form
     } catch (err) {
       console.error(err);
+      alert("Erreur lors de l'envoi, réessaie !");
     } finally {
-      setIsSending(false);
+      setIsSending(false); 
     }
   };
 
@@ -58,11 +83,13 @@ export default function Contact() {
 
         <p className="contact-intro">
           Je recherche un poste de <strong>Développeur Front-End</strong> dans la région de
-          <strong> Toulouse </strong> afin d’intégrer une équipe dynamique, contribuer à des
-          projets web ambitieux et approfondir mes compétences. Une opportunité, une question
-          ou juste envie d’échanger ? Envoyez-moi un message — je réponds rapidement.
+          <strong> Toulouse </strong>
+          afin d’intégrer une équipe dynamique, contribuer à des projets web ambitieux et
+          approfondir mes compétences. Une opportunité, une question ou juste envie
+          d’échanger ? Envoyez-moi un message — je réponds rapidement.
         </p>
 
+        {/*  FORMULAIRE */}
         <form onSubmit={handleSubmit} id="contact-form" aria-label="Formulaire de contact">
           <div className="field">
             <label htmlFor="contact-name" className="sr-only">
@@ -112,6 +139,7 @@ export default function Contact() {
             />
           </div>
 
+          {/* Bouton  */}
           <button type="submit" disabled={isSending} aria-busy={isSending}>
             {isSending ? "Envoi..." : "Envoyer"}
           </button>
@@ -129,6 +157,7 @@ export default function Contact() {
         </p>
       </div>
 
+      {/* MODALE */}
       {isSent && (
         <div className="modal-overlay" onClick={closeModal} role="presentation">
           <div
@@ -137,7 +166,7 @@ export default function Contact() {
             aria-modal="true"
             aria-labelledby="modal-title"
             aria-describedby="modal-desc"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()} // empêche fermeture si clic dedans
           >
             <div className="modal-icon" aria-hidden="true">
               ✓

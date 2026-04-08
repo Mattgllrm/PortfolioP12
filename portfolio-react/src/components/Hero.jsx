@@ -11,9 +11,9 @@ export default function Hero() {
         </h1>
 
        <p>
-  Développeur front-end en reconversion, je construis des interfaces
-  web structurées, performantes et pensées pour évoluer dans le temps.
-</p>
+          Développeur front-end en reconversion, je construis des interfaces
+          web structurées, performantes et pensées pour évoluer dans le temps.
+      </p>
 
         <div className="hero-actions">
           <a href="#projects" className="btn primary">

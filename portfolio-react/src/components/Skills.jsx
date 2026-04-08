@@ -7,7 +7,7 @@ export default function Skills() {
       <div className="container">
         <h2>Compétences</h2>
 
-        {/* Intro */}
+
         <p className="skills-intro">
   Une sélection des technologies que j’utilise actuellement, et que je continue
   d’approfondir et d’élargir au fil de mon évolution professionnelle.

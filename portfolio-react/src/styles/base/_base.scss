@@ -1,0 +1,51 @@
+@use "../utils/variables" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+  line-height: 1.6;
+  color: $text;
+  background:
+    radial-gradient(1100px 700px at 20% 10%, rgba(79, 140, 255, 0.20), transparent 55%),
+    radial-gradient(900px 600px at 90% 20%, rgba(124, 92, 255, 0.18), transparent 55%),
+    linear-gradient(180deg, $bg, $bg-2);
+  min-width: 380px;
+  padding-top: 70px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 65px 0;
+}
+
+section h2 {
+  font-size: 2.1rem;
+  margin-bottom: 36px;
+  text-align: center;
+  color: $text;
+  letter-spacing: -0.02em;
+}

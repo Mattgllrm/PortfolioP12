@@ -1,0 +1,127 @@
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+#projects {
+  background: transparent;
+}
+
+.projects-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(12, 1fr);
+  margin-top: 18px;
+}
+
+.project-card {
+  grid-column: span 6;
+  overflow: hidden;
+  @include glass-card($surface, $border, $radius, $shadow-soft);
+  @include interactive-lift(
+    -6px,
+    $shadow,
+    rgba(255, 255, 255, 0.18),
+    $surface-2
+  );
+
+  &:hover .project-card__cta {
+    transform: translateX(4px);
+  }
+}
+
+.project-card__link {
+  display: block;
+  color: inherit;
+  height: 100%;
+}
+
+.project-card__media {
+  height: 190px;
+  background:
+    radial-gradient(600px 240px at 20% 30%, rgba(79, 140, 255, 0.35), transparent 60%),
+    radial-gradient(520px 220px at 80% 20%, rgba(124, 92, 255, 0.28), transparent 60%),
+    rgba(255, 255, 255, 0.04);
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.04);
+  }
+}
+
+.project-card__placeholder {
+  height: 100%;
+  @include flex-center;
+  padding: 18px;
+  text-align: center;
+
+  span {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    font-size: 1.05rem;
+  }
+}
+
+.project-card__body {
+  padding: 18px 18px 20px;
+}
+
+.project-card__top {
+  @include flex-center(row, space-between, flex-start, 14px);
+  margin-bottom: 10px;
+}
+
+.project-card__title {
+  font-size: 1.15rem;
+  color: $text;
+  letter-spacing: -0.01em;
+}
+
+.project-card__badge {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  @include pill-badge(
+    $accent,
+    rgba(79, 140, 255, 0.12),
+    rgba(79, 140, 255, 0.22)
+  );
+}
+
+.project-card__desc {
+  color: $muted;
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+.project-card__tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.project-card__tag {
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: $text;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.project-card__cta {
+  display: inline-block;
+  font-weight: 900;
+  color: $accent;
+  transition: transform 0.25s ease;
+}
+
+@include respond(tablet) {
+  .project-card {
+    grid-column: span 12;
+  }
+}
