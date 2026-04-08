@@ -1,1 +1,38 @@
-# PortfolioP12
+#  Portfolio - Matthis Guillerm
+
+Bienvenue sur mon portfolio de développeur front-end 
+Ce projet présente mes réalisations, mes compétences et mon parcours dans le développement web.
+
+##  Démo
+
+👉 
+
+##  Technologies utilisées
+
+-  React 
+- SCSS 
+-  Responsive design 
+- Animations CSS
+- Formspree (gestion du formulaire de contact)
+
+##  Installation
+
+- Cloner le projet
+git clone 
+
+- Aller dans le dossier
+cd portfolio
+
+- Installer les dépendances
+npm install
+
+- Lancer le projet
+npm run dev
+
+
+
+---
+
+## 📄 Licence
+
+Ce projet est personnel et destiné à un usage de démonstration.
